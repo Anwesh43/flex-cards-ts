@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 
 const delay : number = 20 
 const scGap : number = 0.02 
-const useAnimatedScale = () => {
+export const useAnimatedScale = () => {
     const [scale, setScale] : [number, Function] = useState(0)
     const [animated, setAnimated] : [boolean, Function] = useState(false)
     return {
@@ -24,4 +24,18 @@ const useAnimatedScale = () => {
             }
         }
     }
+}
+
+export const useDimension = () => {
+    const [w, setW] = useState(window.innerWidth)
+    const [h, setH] = useState(window.innerHeight)
+    useEffect(() => {
+        window.onresize = () => {
+            setW(window.innerWidth)
+            setH(window.innerHeight)
+        }
+        return () => {
+
+        }
+    })
 }
